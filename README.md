@@ -48,10 +48,12 @@ python -m muweb install /tmp/sine_formation.muweb --interactive-dir /path/to/muw
 ```
 
 For the real-host integration test, build a temporary MuWeave document with
-`µblock.applet(item=459, html="inline", numbered=False)`, the initial directive
-`µ! pyhtml --math-renderer=mathjax`, and the candidate module directory supplied
-through `--interactive-dir`. The canonical item requests the compact view
-because the MuWeave frame supplies the title. Run
+`µblock.applet(item=459, html="inline", numbered=False)` and the candidate
+module directory supplied through `--interactive-dir`. Keep the ordinary
+Typst document renderer: PyHTML supplies the declared MathJax profile only
+inside the isolated module. No document-wide renderer override is needed.
+The canonical item requests the compact view because the MuWeave frame supplies
+the title. Run
 `python scripts/check-browser.py /tmp/sine-preview.html` using an environment
 with Playwright and Chrome. The test covers signed heights, cardinal angles,
 speed changes, pause/resume/reset, the endpoint, keyboard controls, narrow
