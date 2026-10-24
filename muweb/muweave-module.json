@@ -1,0 +1,27 @@
+{
+  "format": "muweave-interactive-module",
+  "format_version": 3,
+  "id": "sine_formation",
+  "version": "20261024.084153",
+  "entry": "embed.html",
+  "canonical_url": "https://georg184.github.io/items/459/",
+  "title": {"de": "Die Entstehung der Sinusfunktion"},
+  "offline": true,
+  "state_version": 1,
+  "preferred_height": "18cm",
+  "permissions": [],
+  "ai": {
+    "kind": "animation",
+    "learning_objectives": [
+      "Understand x as the counterclockwise arc length on the unit circle and as the horizontal coordinate of the sine graph",
+      "Compare the identical signed vertical coordinates in the unit circle and at (x, sin(x))",
+      "Observe the progressive sine graph from x=0 to x=4*pi, with exact pi/2 axis ticks",
+      "Change angular speed between 5 and 120 degrees per second without changing the current angle",
+      "Interpret one complete revolution as arc length 2*pi and recognize the second period; its remaining orange arc is labelled x-2*pi",
+      "Use pause, reset, arc-length selection and exact-angle shortcuts to compare both green bars from y=0 to y=sin(x); restored work opens paused"
+    ]
+  },
+  "default_activity": "sine",
+  "activities": {},
+  "runtime_requirements": {"math": "muweave-mathjax-4-svg-v1"}
+}
