@@ -1,7 +1,7 @@
 /* SVG animation: one angular state drives the circle, both heights and the trace. */
 (function () {
   'use strict';
-  const APP_VERSION = '20261024.084153';
+  const APP_VERSION = '20261024.095852';
   const core = window.SineFormation;
   const bridge = window.MuWeaveModuleBridge || null;
   const byId = id => document.getElementById(id);
@@ -131,6 +131,7 @@
       const node = byId(id);
       node.setAttribute('x1', px); node.setAttribute('x2', px);
       node.setAttribute('y1', cy); node.setAttribute('y2', pointY);
+      node.setAttribute('visibility', Math.abs(sine) > 1e-12 ? 'visible' : 'hidden');
     }
     for (const [id, px] of [['circle-point', circleX], ['graph-point', graphX]]) {
       byId(id).setAttribute('cx', px); byId(id).setAttribute('cy', pointY);
@@ -184,7 +185,7 @@
     if (running) { pause(); byId('status').textContent = 'Pausiert. Start setzt die Zeichnung fort.'; return; }
     if (state.x >= core.END) state.x = 0;
     running = true; previous = performance.now();
-    byId('play').textContent = 'Pause'; byId('status').textContent = 'Die Bogenlänge wächst; beide grünen Stäbe zeigen dieselbe Höhe.';
+    byId('play').textContent = 'Pause'; byId('status').textContent = 'Die Bogenlänge wächst; beide grünen Pfeile zeigen dieselbe y-Koordinate.';
     draw(); frame = requestAnimationFrame(tick);
   });
   byId('reset').addEventListener('click', () => {
@@ -208,7 +209,7 @@
   root.querySelectorAll('[data-angle]').forEach(button => button.addEventListener('click', () => {
     if (!ready || locked) return;
     pause(); state.x = Number(button.dataset.angle) * Math.PI; draw(); publish();
-    byId('status').textContent = 'Bogenlänge gewählt. Vergleiche die beiden grünen Stäbe.';
+    byId('status').textContent = 'Bogenlänge gewählt. Vergleiche die beiden grünen Pfeile.';
   }));
   document.addEventListener('visibilitychange', () => { if (document.hidden && running) pause(); });
   window.addEventListener('pagehide', () => { if (ready) pause(); });

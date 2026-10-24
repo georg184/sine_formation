@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Aus der Bewegung auf dem Einheitskreis entsteht der Graph der Sinusfunktion.">
   <title>Die Entstehung der Sinusfunktion</title>
-  <script>window.GG_APP_VERSION = '20261024.084153';</script>
-  <link rel="stylesheet" href="css/styles.css?v=20261024.084153">
-  <script src="js/mathjax-config.js?v=20261024.084153"></script>
+  <script>window.GG_APP_VERSION = '20261024.095852';</script>
+  <link rel="stylesheet" href="css/styles.css?v=20261024.095852">
+  <script src="js/mathjax-config.js?v=20261024.095852"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@mathjax/mathjax-modern-font@4.1.3/tex-mml-svg-mathjax-modern.js"></script>
-  <script defer src="js/core.js?v=20261024.084153"></script>
-  <script defer src="js/vendor/muweave-typography.js?v=20261024.084153"></script>
-  <script defer src="js/app.js?v=20261024.084153"></script>
+  <script defer src="js/core.js?v=20261024.095852"></script>
+  <script defer src="js/vendor/muweave-typography.js?v=20261024.095852"></script>
+  <script defer src="js/app.js?v=20261024.095852"></script>
 </head>
 <body>
   <main id="app" class="applet">
@@ -25,10 +25,11 @@
       <div class="plot-scroll" tabindex="0" aria-label="Diagramm; auf schmalen Bildschirmen waagrecht verschiebbar">
         <svg id="diagram" viewBox="0 0 1320 440" role="img" aria-labelledby="diagram-title diagram-description">
           <title id="diagram-title">Einheitskreis und Graph der Sinusfunktion</title>
-          <desc id="diagram-description">Links läuft ein Punkt gegen den Uhrzeigersinn. Seine Bogenlänge wird rechts als x-Koordinate abgetragen. Zwei gleich hohe grüne Stäbe zeigen y gleich sin(x).</desc>
+          <desc id="diagram-description">Links läuft ein Punkt gegen den Uhrzeigersinn. Seine Bogenlänge wird rechts als x-Koordinate abgetragen. Zwei grüne Pfeile zeigen von der waagrechten Achse zum Punkt und damit die Koordinate y gleich sin(x).</desc>
           <defs>
             <marker id="axis-tip" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L7 3.5 L0 7" fill="none" stroke="#667085" stroke-width="1.5"/></marker>
             <marker id="orange-tip" markerWidth="10" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L9 4.5 L0 9 Z" fill="#D97706"/></marker>
+            <marker id="green-tip" markerWidth="10" markerHeight="9" refX="9" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L9 4.5 L0 9 Z" fill="#16805D"/></marker>
             <clipPath id="trace-window"><rect id="trace-clip" x="392" y="75" width="0" height="285"/></clipPath>
           </defs>
           <g id="grid"></g>
@@ -47,17 +48,17 @@
           <line id="height-guide" stroke="#16805D" stroke-opacity="0.35" stroke-width="1.3" stroke-dasharray="5 6"/>
           <line id="moving-radius" x1="170" y1="218" stroke="#4B5563" stroke-width="1.7"/>
           <line x1="170" y1="218" x2="284" y2="218" stroke="#2563EB" stroke-width="3"/>
+          <circle id="circle-point" r="3" fill="#16805D" stroke="white" stroke-width="1"/>
+          <circle id="graph-point" r="3" fill="#16805D" stroke="white" stroke-width="1"/>
           <path id="arc" fill="none" stroke="#D97706" stroke-width="4" stroke-linejoin="round" marker-end="url(#orange-tip)"/>
           <line id="graph-x" x1="392" y1="218" y2="218" stroke="#D97706" stroke-width="4" marker-end="url(#orange-tip)"/>
-          <line id="circle-y" stroke="#16805D" stroke-width="5" stroke-linecap="round"/>
-          <line id="graph-y" stroke="#16805D" stroke-width="5" stroke-linecap="round"/>
+          <line id="circle-y" stroke="#16805D" stroke-width="4" marker-end="url(#green-tip)"/>
+          <line id="graph-y" stroke="#16805D" stroke-width="4" marker-end="url(#green-tip)"/>
           <g id="moving-labels"></g>
           <circle cx="170" cy="218" r="3" fill="#4B5563"/>
-          <circle id="circle-point" r="5.5" fill="#16805D" stroke="white" stroke-width="1.5"/>
-          <circle id="graph-point" r="5.5" fill="#16805D" stroke="white" stroke-width="1.5"/>
         </svg>
       </div>
-      <div class="legend"><span><i class="swatch orange"></i>Bogenlänge \(x\)</span><span><i class="swatch green"></i>Höhe \(y=\sin(x)\)</span><span id="lap-note">Erster Umlauf</span></div>
+      <div class="legend"><span><i class="swatch orange"></i>Bogenlänge \(x\)</span><span><i class="swatch green"></i>Koordinate \(y=\sin(x)\)</span><span id="lap-note">Erster Umlauf</span></div>
     </section>
     <section class="position" aria-label="Bogenlänge wählen">
       <div class="position-top"><label for="position">Bogenlänge <span class="orange-text">\(x\)</span></label><span class="values"><span>\(x\) ≈ <output id="x-value">0</output></span><span>\(y\) ≈ <output id="y-value">0</output></span><span>\(\alpha\) ≈ <output id="angle-value">0</output>°</span></span></div>
@@ -65,7 +66,7 @@
       <div class="position-marks"><span>\(0\)</span><span>\(\pi\)</span><span>\(2\pi\)</span><span>\(3\pi\)</span><span>\(4\pi\)</span></div>
       <div class="landmarks" aria-label="Besondere Bogenlängen"><button data-angle="0" disabled>\(0\)</button><button data-angle="0.5" disabled>\(\pi/2\)</button><button data-angle="1" disabled>\(\pi\)</button><button data-angle="1.5" disabled>\(3\pi/2\)</button><button data-angle="2" disabled>\(2\pi\)</button><button data-angle="4" disabled>\(4\pi\)</button></div>
     </section>
-    <p class="explanation">Gleiche Höhe, neuer Ort: Die beiden grünen Stäbe sind gleich lang und zeigen in dieselbe Richtung. Rechts liegt ihr oberes bzw. unteres Ende auf dem entstehenden Sinusgraphen.</p>
+    <p class="explanation">Die grünen Pfeile zeigen von der waagrechten Achse zum Punkt: für \(y&gt;0\) nach oben, für \(y&lt;0\) nach unten. Beide stellen dieselbe Koordinate \(y\) dar. Rechts liegt die Pfeilspitze auf dem entstehenden Sinusgraphen.</p>
     <p id="status" class="status" role="status">Bereit. Starte die Bewegung oder wähle eine Bogenlänge.</p>
   </main>
   <noscript>Dieses Applet benötigt JavaScript.</noscript>

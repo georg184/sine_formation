@@ -1,7 +1,7 @@
 /* Pure angular motion and versioned learner-state validation. */
 (function (global) {
   'use strict';
-  const VERSION = '20261024.084153';
+  const VERSION = '20261024.095852';
   const TAU = 2 * Math.PI;
   const END = 2 * TAU;
 

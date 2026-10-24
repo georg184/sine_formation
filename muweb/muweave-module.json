@@ -2,7 +2,7 @@
   "format": "muweave-interactive-module",
   "format_version": 3,
   "id": "sine_formation",
-  "version": "20261024.084153",
+  "version": "20261024.095852",
   "entry": "embed.html",
   "canonical_url": "https://georg184.github.io/items/459/",
   "title": {"de": "Die Entstehung der Sinusfunktion"},
@@ -18,7 +18,7 @@
       "Observe the progressive sine graph from x=0 to x=4*pi, with exact pi/2 axis ticks",
       "Change angular speed between 5 and 120 degrees per second without changing the current angle",
       "Interpret one complete revolution as arc length 2*pi and recognize the second period; its remaining orange arc is labelled x-2*pi",
-      "Use pause, reset, arc-length selection and exact-angle shortcuts to compare both green bars from y=0 to y=sin(x); restored work opens paused"
+      "Use pause, reset, arc-length selection and exact-angle shortcuts to compare both green arrows from y=0 to y=sin(x), pointing up for positive and down for negative coordinates; restored work opens paused"
     ]
   },
   "default_activity": "sine",
